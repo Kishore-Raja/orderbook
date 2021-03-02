@@ -4,19 +4,18 @@ import { isEmpty } from 'lodash';
 export const orderBookSlice = createSlice({
   name: 'orderBook',
   initialState: {
-    snapshot: [],
+    snapshot: {},
   },
   reducers: {
     addSnapshot: (state, action) => {
       let payload = action.payload;
-      let payloadID = payload[0]
+     // let payloadID = payload[0]
       let payloadData = payload[1]
       let channelData = payloadData.map(item => {
         let obj = {
           price: item[0],
           count: item[1],
-          amount: item[2],
-          total: (item[1] * item[2])
+          amount: item[2]
         };
         return obj;
       })
@@ -25,7 +24,15 @@ export const orderBookSlice = createSlice({
         "channelData": channelData,
       };
       let prevData = current(state.snapshot);
-      let snapshot =  isEmpty(prevData)?[snapshotData]:[prevData[0], snapshotData];
+      console.log(prevData.length);
+    //  let snapshot =  isEmpty(prevData)?[snapshotData]:[prevData[0], snapshotData];
+    let snapshot = {};
+    if(isEmpty(prevData)){
+      snapshot["bids"] = snapshotData;
+    } else {
+      snapshot["bids"] = prevData["bids"];
+      snapshot["asks"] = snapshotData;
+    }
       state.snapshot = snapshot;
     },
   },

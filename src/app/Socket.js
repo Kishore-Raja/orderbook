@@ -18,8 +18,7 @@ const Socket = ({ children }) => {
         "symbol": "tBTCUSD",
         "pair": "BTCUSD",
         "prec": "P0",
-        "freq":"F0",
-        "len": 100
+        "freq":"F0"
     };
 
     if (!socket) {
@@ -32,11 +31,29 @@ const Socket = ({ children }) => {
         socket.onmessage = e => {
             const value = JSON.parse(e.data);
            if(Array.isArray(value) && value[1].length>3){
-                console.log("channel id", value);
+            //    console.log("channel id", value);
                
                 dispatch(addSnapshot(value))
-            } else {
-        //        console.log("object",value);
+            } else if(Array.isArray(value) && value[1].length===3) {
+                console.log("channel data",value);
+                let channelID = value[0];
+                let channelData = value[1];
+                if(channelData[1]==0){
+                    if(channelData[2] == 1){
+                        console.log("remove from bid");
+                       // dispatch(removeFromBid(value))
+                    } else {
+                        console.log("remove from ask");
+                    }
+                } else {
+                  if(channelData[2]>0){
+                        console.log("update bid or add");
+                    } else {
+                            console.log("update ask or add");
+                    }
+                }
+                 
+             //   dispatch()
             }
             
         };

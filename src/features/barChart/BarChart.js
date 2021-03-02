@@ -19,14 +19,14 @@ export default class BarChart extends Component {
             type: 'horizontalBar',
             data: {
                 //Bring in data
-                labels: chartDataLabel,
+             //   labels: chartDataLabel,
                 datasets: [
                     {
                         data: [86, 67, 91],
-                        barPercentage: 0.5,
-        barThickness: 6,
-        maxBarThickness: 8,
-        minBarLength: 2,
+                       // barPercentage: 0.5,
+     //   barThickness: 6,
+      //  maxBarThickness: 8,
+     //   minBarLength: 2,
                     }
                 ],
                 
@@ -39,7 +39,6 @@ export default class BarChart extends Component {
                 scales: {
                     yAxes: [{
                       id: "bar-y-axis1",
-                      barPercentage: 0.9,
                       ticks: {
                         display: false
                       },

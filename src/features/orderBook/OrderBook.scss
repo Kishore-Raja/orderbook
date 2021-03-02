@@ -45,37 +45,65 @@
         height: 100%;
       }
       .book_rows{
-      .book_row{
-      display: flex;
-      justify-content: space-between;
-      margin: 0 5px;
-      height: 17px;
+        .book_row{
+        display: flex;
+        justify-content: space-between;
+        margin: 0 5px;
+        height: 17px;
 
-      .col{
-        width:20%;
-        text-align:right;
-        display:block;
-        &.center{
-          text-align: center;
+        
+        .progress{
+          border: 1px solid green;
+          position: relative;
+    // color: green;
+    // background: green;
+      //display: block;
+      width: 100%;
+          .bar{
+            height: 15px;
+            background: green;
+            position:absolute;
+            z-index: -1;
+          }
+          .col{
+            width:20%;
+            text-align:right;
+            display:block;
+            float: left;
+            &.center{
+              text-align: center;
+            }
+          }
         }
-      }
-      .progress{
-        position: absolute;
-    /* top: 0; */
-    /* bottom: 0; */
-    /* right: 0; */
-    background-color: #8F8;
-    z-index: -1;
-    width: var(--value);
-    height: 8%;
-    /* float: left; */
-    display: flex;
-    flex-direction: row;
-      }
+        .progressbar{
+          position: absolute;
+      /* top: 0; */
+      /* bottom: 0; */
+      /* right: 0; */
+      background-color: #8F8;
+      z-index: -1;
+      width: var(--value);
+      height: 8%;
+      /* float: left; */
+      display: flex;
+      flex-direction: row;
+        }
+        }
       }
       &.book_bids {
         .book_header{
           flex-direction: row;
+        }
+        .book_rows{
+          .book_row{
+            .progress{
+              .bar{
+                right: 0;
+              }
+            }
+
+          }
+
         }
         
       }
@@ -89,17 +117,12 @@
         
       }
     }
-    }
-   
-    
-    
-    
-    .book_placeholder{
-      width: 15px;
-    min-width: 15px;
-    max-width: 15px;
-    text-align: center;
-    padding: 0px;
-    }
+  } 
+  .book_placeholder{
+    width: 15px;
+  min-width: 15px;
+  max-width: 15px;
+  text-align: center;
+  padding: 0px;
   }
 }

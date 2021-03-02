@@ -15,9 +15,9 @@ export function OrderBook() {
       <div><em className="fa fa-chevron-down fa-fw"><span className="ui-collapsible_title">Order Book</span> <span className="show50"><span className="">BTC<span className="show-soft">/USD </span> </span></span></em></div>
       <div> </div>
   </div>
- { order && order.length && <div className="book_main">
-            <OrderTable type="book_bids" data={order[0]}/>
-            <OrderTable type="book_asks" data={order[1]}/>
+ { order && order.bids && order.asks && <div className="book_main">
+            <OrderTable type="book_bids" data={order.bids}/>
+            <OrderTable type="book_asks" data={order.asks}/>
     </div>
 }
       

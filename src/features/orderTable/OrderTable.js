@@ -17,6 +17,20 @@ export function OrderTable(props) {
         chartData.push(item.amount);
     })
 
+    let totalUp = function(){
+        let count = 0;
+        return function(val){
+            count=count+val;
+            return count;
+        }
+    }
+
+    let getTotal = totalUp();
+
+    
+
+    let totAmount = channelData.reduce((total, obj) => obj.amount + total,0)
+
    return (
         <div id="book-bids" className={`book_bids_asks ${type}`}>
             <div className="book_header">
@@ -25,20 +39,23 @@ export function OrderTable(props) {
                       <div className="col">Total</div>
                       <div className="col">Price</div>
                 </div>
-                <div className="book_bars"> 
+              {/*  <div className="book_bars"> 
                     {chartData && chartData.length && <BarChart chartData={chartData} chartDataLabel={chartDataLabel} />}
-                </div>
+   </div> */ }
                 <div className="book_rows">
                     {channelData.map(item => {
-                        let total = (item.total * 100)/7;
+                        let total = getTotal(item.amount)
                         let totalPer = `${total}%`;
                     
         return <div className="book_row" data-progress={item.total} >
-           
-            <div className="col center"><span className=" ">{item.count}</span></div>
-            <div className="col"><span className=" ">{item.amount}</span></div>
-            <div className="col"><span className=" ">{item.total}</span></div>
-            <div className="col"><span className=" ">{item.price}</span></div>
+            <div className="progress">
+                <div className="bar" style={{width:totalPer}}></div>
+                <div className="col center"><span className=" ">{item.count}</span></div>
+                <div className="col"><span className=" ">{item.amount}</span></div>
+                <div className="col"><span className=" ">{total}</span></div>
+                <div className="col"><span className=" ">{item.price}</span></div>
+            </div>
+            
         </div>
                     }
        )}
