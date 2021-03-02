@@ -43,11 +43,11 @@ export function OrderTable(props) {
                     {chartData && chartData.length && <BarChart chartData={chartData} chartDataLabel={chartDataLabel} />}
    </div> */ }
                 <div className="book_rows">
-                    {channelData.map(item => {
+                    {channelData.map((item,index) => {
                         let total = getTotal(item.amount)
                         let totalPer = `${total}%`;
                     
-        return <div className="book_row" data-progress={item.total} >
+        return <div keys={`row_${index}`} className="book_row" data-progress={item.total} >
             <div className="progress">
                 <div className="bar" style={{width:totalPer}}></div>
                 <div className="col center"><span className=" ">{item.count}</span></div>
