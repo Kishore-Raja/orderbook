@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  selectOrder,
+  selectOrderBid,
+  selectOrderAsk
 } from '../../app/orderBookSlice';
 import './OrderBook.scss';
 import { OrderTable } from '../orderTable/OrderTable';
 
 export function OrderBook() {
-  const order = useSelector(selectOrder);
-  console.log("snapshotOrders",order)
+  const orderbids = useSelector(selectOrderBid);
+  const orderasks = useSelector(selectOrderAsk);
+  console.log("orderbids", orderbids)
+  console.log("orderasks", orderasks)
+  
   return (
   <div className="container">
   <div className="book_header">
@@ -16,8 +20,8 @@ export function OrderBook() {
       <div> </div>
   </div>
   <div className="book_main">
- { order && order.bids  && <OrderTable type="book_bids" data={order.bids}/> }
- { order && order.asks  && <OrderTable type="book_asks" data={order.asks}/> }
+ { orderbids && <OrderTable type="book_bids" data={orderbids} /> }
+ { orderasks && <OrderTable type="book_asks" data={orderasks} /> }
     </div>
       
  

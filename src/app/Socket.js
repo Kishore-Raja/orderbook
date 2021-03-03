@@ -2,6 +2,10 @@ import React, { createContext } from 'react'
 //import { WS_BASE } from './config';
 import {
     addSnapshot,
+    removeFromBid,
+    removeFromAsk,
+    addOrUpdateBid,
+    addOrUpdateAsk,
   } from './orderBookSlice';
 import { useDispatch } from 'react-redux';
 
@@ -40,16 +44,19 @@ const Socket = ({ children }) => {
                 let channelData = value[1];
                 if(channelData[1]==0){
                     if(channelData[2] == 1){
-                        console.log("remove from bid");
-                       // dispatch(removeFromBid(value))
+                      //  console.log("remove from bid");
+                        dispatch(removeFromBid(value))
                     } else {
-                        console.log("remove from ask");
+                      //  console.log("remove from ask");
+                      dispatch(removeFromAsk(value))
                     }
                 } else {
                   if(channelData[2]>0){
                         console.log("update bid or add");
+                    dispatch(addOrUpdateBid(value))
                     } else {
-                            console.log("update ask or add");
+                      //      console.log("update ask or add");
+                      dispatch(addOrUpdateAsk(value))
                     }
                 }
                  

@@ -1,3 +1,40 @@
+$body-bg: #273640;
+    $secondary-bg: #1b262d;
+    $secondary-bg1: #1f2b33;
+    $secondary-bg2: #212e36;
+    $secondary-bg3: #212e36;
+    $primary-text-color: #fff;
+    $primary-text-color1: #fff;
+    $primary-text-color2: #fff;
+    $primary-text-color3: #969b9e;
+    $buy-color: #16b157;
+    $sell-color: #f05359;
+    $link-color: #82baf6;
+    $error-color: #5c3f46;
+    $banner-bg: linear-gradient(81.3deg,#102331 -5.27%,#4166bc 88.44%);
+    $banner-bg1: linear-gradient(77.89deg,#172d3e -5.27%,#4166bc 88.44%);
+    $banner-text-color: #eaeaea;
+    $logo-text-color: #fff;
+    $logo-leaf-top-color: #16b157;
+    $logo-leaf-bottom-color: #98e35d;
+    $sidenav-list-border-color: #2a3c47;
+    $sidenav-list-item-color: #c4c7c9;
+    $sidenav-list-item-bg-color: #242e34;
+    $sidenav-list-item-border-color: #2a3c47;
+    $sidenav-list-item-hover-bg-color: #28343a;
+    $sidenav-list-item-icon-color: #c4c7c9;
+    $sidenav-list-item-active-bg-color: #36464f;
+    $separator-color: hsla(0,0%,100%,0.2);
+    $pulse-message-your-bg: #344a5c;
+    $pulse-message-other-bg: #273640;
+    $buy-color-rgb: 22,177,87;
+    $sell-color-rgb: 240,83,89;
+
+body{
+  background: $body-bg;
+  color: $primary-text-color;
+  font-size: 11px;
+}
 .container {
   border: 1px solid #19232a;
   box-shadow: none!important;
@@ -10,7 +47,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-size: .9rem;
+    font-size: 11px;
     padding: 0 0 0 5px;
   }
   .book_main{
@@ -27,7 +64,6 @@
       .book_header{
         display: flex;
         grid-gap: 2px;
-        margin: 0 5px;
         text-transform: uppercase;
         justify-content: space-between;
         .col{
@@ -48,28 +84,29 @@
         .book_row{
         display: flex;
         justify-content: space-between;
-        margin: 0 5px;
         height: 17px;
 
         
         .progress{
-          border: 1px solid green;
+         // border: 1px solid $buy-color;
           position: relative;
-    // color: green;
-    // background: green;
+    // color: $buy-color;
+    // background: $buy-color;
       //display: block;
       width: 100%;
           .bar{
-            height: 15px;
-            background: green;
+            height: 17px;
+            background: $buy-color;
             position:absolute;
             z-index: -1;
+            opacity: 0.4;
           }
           .col{
             width:20%;
             text-align:right;
             display:block;
             float: left;
+            font-weight: 500;
             &.center{
               text-align: center;
             }
@@ -113,6 +150,11 @@
         }
         .book_row{
           flex-direction: row-reverse;
+          .progress{
+            .bar{
+              background: $sell-color;
+            }
+          }
         }
         
       }
