@@ -49,6 +49,13 @@ body{
     justify-content: space-between;
     font-size: 11px;
     padding: 0 0 0 5px;
+    .icon{
+      display: inline-block;
+      width: 30px;
+      &.disabled{
+        opacity: 0.4;
+      }
+    }
   }
   .book_main{
     display: flex;
@@ -66,6 +73,8 @@ body{
         grid-gap: 2px;
         text-transform: uppercase;
         justify-content: space-between;
+        color: $primary-text-color3;
+        font-weight: 500;
         .col{
           width:20%;
           text-align:right;
@@ -85,15 +94,9 @@ body{
         display: flex;
         justify-content: space-between;
         height: 17px;
-
-        
         .progress{
-         // border: 1px solid $buy-color;
           position: relative;
-    // color: $buy-color;
-    // background: $buy-color;
-      //display: block;
-      width: 100%;
+          width: 100%;
           .bar{
             height: 17px;
             background: $buy-color;
@@ -110,24 +113,35 @@ body{
             &.center{
               text-align: center;
             }
+            &.left{
+              text-align: left;
+            }
+            .icon{
+              visibility: hidden;
+            }
+          }
+          &:hover{
+            
+            .col{
+              .icon{
+                visibility: visible;
+                .row_bell{
+                  color:$sidenav-list-item-icon-color;
+                  &:hover{
+                    color:white;
+                  }
+                }
+              }
+            }
           }
         }
-        .progressbar{
-          position: absolute;
-      /* top: 0; */
-      /* bottom: 0; */
-      /* right: 0; */
-      background-color: #8F8;
-      z-index: -1;
-      width: var(--value);
-      height: 8%;
-      /* float: left; */
-      display: flex;
-      flex-direction: row;
+        &:hover{
+          background: $sidenav-list-item-hover-bg-color;
+          opacity: 0.9;
         }
         }
       }
-      &.book_bids {
+      &.book_asks {
         .book_header{
           flex-direction: row;
         }
@@ -144,7 +158,7 @@ body{
         }
         
       }
-      &.book_asks {
+      &.book_bids {
         .book_header{
           flex-direction: row-reverse;
         }
