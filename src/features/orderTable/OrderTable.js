@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell,faSearchPlus, faSearchMinus, faCog, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faBell,faSearchPlus, faSearchMinus, faCog, faPlus, faMinus, Spinner, faSpinner, faCircleNotch} from '@fortawesome/free-solid-svg-icons';
 import { getZoomLevel,getDepthViz, getColOrder, getTableView, getFetchCompleteStatus } from '../../app/orderBookSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import Modal from '../modalPopup/ModalPopup';
+
 export function OrderTable(props) {
     const { type, data } = props;
     const zoomLevel = useSelector(getZoomLevel);
@@ -56,6 +58,7 @@ export function OrderTable(props) {
                       
                 </div>:""
                 }
+                { !fetchComplete && <div className="loader"><FontAwesomeIcon icon={faCircleNotch} spin /> <span>Loading</span></div>}
                 { fetchComplete && <div className="book_rows">
                    
                     {newData.map((item,index) => {
@@ -67,7 +70,7 @@ export function OrderTable(props) {
                         return (type=="book_asks")?<div keys={`row_${index}`} className="book_row" data-progress={item.total} >
                             <div className="progress">
                                 <div className="bar" style={{width:totalPer}}></div>
-                                <div className="col"><span className="icon"><FontAwesomeIcon className="row_bell" icon={faBell} /></span></div>
+                                <div className="col"><span className="icon"><Modal show="alert"/></span></div>
                                 <div className="col center"><span >{item.count}</span></div>
                                 <div className="col"><span >{(item.amount>-0.09 && item.amount<0.09)?item.amount.toFixed(4):item.amount.toPrecision(4)}</span></div>
                                 <div className="col"><span >{(total>-0.09 && total<0.09)?total.toFixed(4):total.toPrecision(4)}</span></div>
@@ -80,14 +83,14 @@ export function OrderTable(props) {
                                 <div className="col"><span >{(total>-0.09 && total<0.09)?total.toFixed(4):total.toPrecision(4)}</span></div>
                                 <div className="col"><span >{(item.amount>-0.09 && item.amount<0.09)?item.amount.toFixed(4):item.amount.toPrecision(4)}</span></div>
                                 <div className="col center"><span >{item.count}</span></div>
-                                <div className="col left"><span className="icon"><FontAwesomeIcon className="row_bell" icon={faBell} /></span></div>
+                                <div className="col left"><span className="icon"><Modal show="alert"/></span></div>
                             </div>
                         </div>
                     } else if(colOrder === "cpat"){
                         return (type=="book_asks")?<div keys={`row_${index}`} className="book_row" data-progress={item.total} >
                         <div className="progress">
                             <div className="bar" style={{width:totalPer}}></div>
-                            <div className="col"><span className="icon"><FontAwesomeIcon className="row_bell" icon={faBell} /></span></div>
+                            <div className="col"><span className="icon"><Modal show="alert"/></span></div>
                             <div className="col center"><span >{item.count}</span></div>
                             <div className="col"><span >{item.price}</span></div>
                             <div className="col"><span >{(item.amount>-0.09 && item.amount<0.09)?item.amount.toFixed(4):item.amount.toPrecision(4)}</span></div>
@@ -101,7 +104,7 @@ export function OrderTable(props) {
                             <div className="col"><span >{(item.amount>-0.09 && item.amount<0.09)?item.amount.toFixed(4):item.amount.toPrecision(4)}</span></div>
                             <div className="col"><span >{item.price}</span></div>
                             <div className="col center"><span >{item.count}</span></div>
-                            <div className="col left"><span className="icon"><FontAwesomeIcon className="row_bell" icon={faBell} /></span></div>
+                            <div className="col left"><span className="icon"><Modal show="alert"/></span></div>
                         </div>
                     </div>
 
@@ -109,7 +112,7 @@ export function OrderTable(props) {
                         return (type=="book_asks")?<div keys={`row_${index}`} className="book_row" data-progress={item.total} >
                         <div className="progress">
                             <div className="bar" style={{width:totalPer}}></div>
-                            <div className="col"><span className="icon"><FontAwesomeIcon className="row_bell" icon={faBell} /></span></div>
+                            <div className="col"><span className="icon"><Modal show="alert"/></span></div>
                             <div className="col center"><span >{item.count}</span></div>
                             <div className="col"><span >{(total>-0.09 && total<0.09)?total.toFixed(4):total.toPrecision(4)}</span></div>
                             <div className="col"><span >{item.price}</span></div>
@@ -123,7 +126,7 @@ export function OrderTable(props) {
                             <div className="col"><span >{item.price}</span></div>
                             <div className="col"><span >{(total>-0.09 && total<0.09)?total.toFixed(4):total.toPrecision(4)}</span></div>
                             <div className="col center"><span >{item.count}</span></div>
-                            <div className="col left"><span className="icon"><FontAwesomeIcon className="row_bell" icon={faBell} /></span></div>
+                            <div className="col left"><span className="icon"><Modal show="alert"/></span></div>
                         </div>
                     </div>
 

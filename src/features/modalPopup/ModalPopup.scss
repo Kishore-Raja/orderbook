@@ -1,18 +1,33 @@
 $modal-bg: #212e36;
+$buy-color: #16b157;
+$sell-color: #f05359;
 .modal {
     background: $modal-bg;
   }
 
   .modal > .header {
-    width: 100%;
-    border-bottom: 1px solid gray;
+    width: 90%;
+    border-bottom: 1px solid #3c4346;
     font-size: 18px;
-    text-align: center;
-    padding: 5px;
+    padding: 10px 25px 10px;
+
   }
   .modal > .content {
     width: 100%;
     padding: 10px 5px;
+    font-size: 15px;
+  }
+ .content_section {
+   margin: 10px;
+  }
+  .block_sec {
+    margin: 10px 0px;
+  }
+  .row-ask{
+    color: $buy-color;
+  }
+  .row-bid{
+    color: $sell-color;
   }
   .modal > .actions {
     width: 100%;
@@ -26,82 +41,26 @@ $modal-bg: #212e36;
     display: block;
     padding: 2px 5px;
     line-height: 20px;
-    right: -10px;
-    top: -10px;
+    right: 6px;
+    top: 5px;
     font-size: 24px;
-    background: #ffffff;
-    border-radius: 18px;
-    border: 1px solid #cfcece;
+    color: #ffffff;
+    background: none;
+    border: none;
+  }
+  .popup-content {
+  margin: auto;
+  background: #fff;
+  width: 50%;
+  padding: 0!important;
+  border: none!important;
+  }
+  h3{
+    margin: 0;
+    padding: 0;
   }
 
-  .css-1dtu19y {
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-flex-shrink: 0;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    width: 1rem;
-    -webkit-transition: box-shadow 250ms;
-    transition: box-shadow 250ms;
-    border: 2px solid;
-    border-radius: 9999px;
-    border-color: inherit;
-    color: #FFFFFF;
-    height: 1rem;
-}
-
-.css-1dtu19y[aria-checked=true],.css-1dtu19y[data-checked] {
-    background: #38A169;
-    border-color: #38A169;
-    color: #FFFFFF;
-}
-
-.css-1dtu19y[aria-checked=true]:hover,.css-1dtu19y[data-checked]:hover,.css-1dtu19y[aria-checked=true][data-hover],.css-1dtu19y[data-checked][data-hover] {
-    background: #2F855A;
-    border-color: #2F855A;
-}
-
-.css-1dtu19y[aria-checked=true][disabled],.css-1dtu19y[data-checked][disabled],.css-1dtu19y[aria-checked=true][disabled]:focus,.css-1dtu19y[data-checked][disabled]:focus,.css-1dtu19y[aria-checked=true][disabled]:hover,.css-1dtu19y[data-checked][disabled]:hover,.css-1dtu19y[aria-checked=true][aria-disabled=true],.css-1dtu19y[data-checked][aria-disabled=true],.css-1dtu19y[aria-checked=true][aria-disabled=true]:focus,.css-1dtu19y[data-checked][aria-disabled=true]:focus,.css-1dtu19y[aria-checked=true][aria-disabled=true]:hover,.css-1dtu19y[data-checked][aria-disabled=true]:hover,.css-1dtu19y[aria-checked=true][data-disabled],.css-1dtu19y[data-checked][data-disabled],.css-1dtu19y[aria-checked=true][data-disabled]:focus,.css-1dtu19y[data-checked][data-disabled]:focus,.css-1dtu19y[aria-checked=true][data-disabled]:hover,.css-1dtu19y[data-checked][data-disabled]:hover {
-    border-color: #E2E8F0;
-    background: #E2E8F0;
-    color: #718096;
-}
-
-.css-1dtu19y[aria-checked=true]::before,.css-1dtu19y[data-checked]::before {
-    content: "";
-    display: inline-block;
-    position: relative;
-    width: 50%;
-    height: 50%;
-    border-radius: 50%;
-    background: currentColor;
-}
-
-.css-1dtu19y:indeterminate,.css-1dtu19y[aria-checked=mixed],.css-1dtu19y[data-indeterminate] {
-    background: #38A169;
-    border-color: #38A169;
-    color: #FFFFFF;
-}
-
-.css-1dtu19y[disabled],.css-1dtu19y[disabled]:focus,.css-1dtu19y[disabled]:hover,.css-1dtu19y[aria-disabled=true],.css-1dtu19y[aria-disabled=true]:focus,.css-1dtu19y[aria-disabled=true]:hover,.css-1dtu19y[data-disabled],.css-1dtu19y[data-disabled]:focus,.css-1dtu19y[data-disabled]:hover {
-    background: #EDF2F7;
-    border-color: #EDF2F7;
-}
-
-.css-1dtu19y:focus,.css-1dtu19y[data-focus] {
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6);
-}
-
-.css-1dtu19y[aria-invalid=true],.css-1dtu19y[data-invalid] {
-    border-color: #E53E3E;
-}
+  .loader{
+    margin:20px;
+    text-align: center;
+  }

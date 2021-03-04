@@ -29,8 +29,8 @@ export function OrderBook() {
       <div>
         {(precision!=4)?<div className="icon" onClick={()=>{ dispatch(decreasePrecision())}}><FontAwesomeIcon icon={faMinus} /></div>:<div className="icon disabled"><FontAwesomeIcon icon={faMinus} /></div>}
         {precision?<div className="icon" onClick={()=>{ dispatch(increasePrecision())}}><FontAwesomeIcon icon={faPlus} /></div>:<div className="icon disabled"><FontAwesomeIcon icon={faPlus} /></div>}
-        <div className="icon"><FontAwesomeIcon icon={faBell} /></div>
-        <div className="icon"><Modal /></div>
+        <div className="icon"><Modal show="alert"/></div>
+        <div className="icon"><Modal show="settings"/></div>
         <div className="icon" onClick={()=>{ dispatch(zoomOut())}}><FontAwesomeIcon icon={faSearchMinus} /></div>
         <div className="icon" onClick={()=>{ dispatch(zoomIn())}}><FontAwesomeIcon icon={faSearchPlus} /></div>
       </div>
