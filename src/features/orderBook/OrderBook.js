@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell,faSearchPlus, faSearchMinus, faCog, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faSearchPlus, faSearchMinus, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../modalPopup/ModalPopup';
 import 'reactjs-popup/dist/index.css';
 import {
@@ -27,7 +27,7 @@ export function OrderBook() {
   <div className="book_header">
       <div><span className="book_title">Order Book</span> <span className="show50"><span className="">BTC<span className="show-soft">/USD </span> </span></span></div>
       <div>
-        {(precision!=4)?<div className="icon" onClick={()=>{ dispatch(decreasePrecision())}}><FontAwesomeIcon icon={faMinus} /></div>:<div className="icon disabled"><FontAwesomeIcon icon={faMinus} /></div>}
+        {(precision!==4)?<div className="icon" onClick={()=>{ dispatch(decreasePrecision())}}><FontAwesomeIcon icon={faMinus} /></div>:<div className="icon disabled"><FontAwesomeIcon icon={faMinus} /></div>}
         {precision?<div className="icon" onClick={()=>{ dispatch(increasePrecision())}}><FontAwesomeIcon icon={faPlus} /></div>:<div className="icon disabled"><FontAwesomeIcon icon={faPlus} /></div>}
         <div className="icon"><Modal show="alert"/></div>
         <div className="icon"><Modal show="settings"/></div>
@@ -37,8 +37,8 @@ export function OrderBook() {
   </div>
   <div className="book_main">
  
- { orderasks && <OrderTable type="book_asks" data={orderasks} /> }
- { orderbids && <OrderTable type="book_bids" data={orderbids} /> }
+ { orderasks && <OrderTable key="bookAsk" type="book_asks" data={orderasks} /> }
+ { orderbids && <OrderTable key="bookBid" type="book_bids" data={orderbids} /> }
     </div>
       
  

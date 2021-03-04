@@ -1,5 +1,4 @@
 import React, { createContext } from 'react'
-//import { WS_BASE } from './config';
 import {
     addSnapshot,
     removeFromBid,
@@ -7,9 +6,6 @@ import {
     addOrUpdateBid,
     addOrUpdateAsk,
     getPrecision,
-    updateSocketConnection,
-    closeSocketConnection,
-    getSocketConnection,
   } from './orderBookSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -34,34 +30,30 @@ const Socket = ({ children }) => {
         socket = new WebSocket('wss://api-pub.bitfinex.com/ws/2');
         
         socket.onopen = () => {
-            console.log("entering");
+           // console.log("entering");
             socket.send(JSON.stringify(subscribe));
         };
 
         socket.onmessage = e => {
             const value = JSON.parse(e.data);
            if(Array.isArray(value) && value[1].length>3){
-            //    console.log("channel id", value);
-               
                 dispatch(addSnapshot(value))
             } else if(Array.isArray(value) && value[1].length===3) {
-              //  console.log("channel data",value);
-                let channelID = value[0];
                 let channelData = value[1];
-                if(channelData[1]==0){
-                    if(channelData[2] == 1){
-                      //  console.log("remove from bid");
+                if(channelData[1]===0){
+                    if(channelData[2] === 1){
+                        console.log("remove from bid");
                         dispatch(removeFromBid(value))
-                    } else if(channelData[2] == -1){
-                      //  console.log("remove from ask");
+                    } else if(channelData[2] === -1){
+                        console.log("remove from ask");
                      dispatch(removeFromAsk(value))
                     }
                 } else {
                   if(channelData[2]>0){
-               //         console.log("update bid or add");
+                        console.log("update bid or add");
                       dispatch(addOrUpdateBid(value))
                     } else if(channelData[2]<0) {
-                      //      console.log("update ask or add");
+                            console.log("update ask or add");
                       dispatch(addOrUpdateAsk(value))
                     }
                 }

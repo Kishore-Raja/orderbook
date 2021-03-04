@@ -1,5 +1,4 @@
 import { createSlice, current } from '@reduxjs/toolkit';
-import { isEmpty } from 'lodash';
 
 export const orderBookSlice = createSlice({
   name: 'orderBook',

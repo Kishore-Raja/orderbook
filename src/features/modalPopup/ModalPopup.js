@@ -3,11 +3,11 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Popup from 'reactjs-popup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell,faSearchPlus, faSearchMinus, faCog, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faCog } from '@fortawesome/free-solid-svg-icons';
 
 import './ModalPopup.scss'
 import { updateDepthViz, updateColOrder, updateView, getColOrder, getTableView, getDepthViz } from '../../app/orderBookSlice';
-export default (props) => {
+const Modal = (props) => {
 
     const dispatch = useDispatch();
     const colOrder = useSelector(getColOrder);
@@ -30,7 +30,7 @@ export default (props) => {
         
 
     <Popup
-      trigger={ <FontAwesomeIcon icon={(props.show=="settings")?faCog:faBell} />}
+      trigger={ <FontAwesomeIcon icon={(props.show==="settings")?faCog:faBell} />}
       modal
       nested
     >
@@ -41,7 +41,7 @@ export default (props) => {
           </button>
           <div className="header"><h3>Interface settings for order book</h3></div>
           
-         {(props.show=="settings")?<div className="content">
+         {(props.show==="settings")?<div className="content">
 <div class="content_section">
    <div class="block_sec interface-setting-orderbook__title">Book Depth Visualization:</div>
    
@@ -89,3 +89,4 @@ export default (props) => {
     </Popup>
 );
             }
+export default Modal;
