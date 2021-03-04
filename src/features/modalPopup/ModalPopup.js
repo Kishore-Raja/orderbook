@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Popup from 'reactjs-popup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell,faSearchPlus, faSearchMinus, faCog, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { Radio, RadioGroup } from "@chakra-ui/react"
+
 import './ModalPopup.scss'
 import { updateDepthViz, updateColOrder, updateView, getColOrder, getTableView, getDepthViz } from '../../app/orderBookSlice';
 export default (props) => {
